@@ -1,0 +1,9 @@
+{
+  "name": "SmolCraft",
+  "version_number": "0.1.0",
+  "website_url": "https://github.com/BhimaJenkins/SmolCraft",
+  "description": "Shrink smelters, kilns, refineries and any crafting station with per-station sliders. Defaults to 70% for furnaces and kilns. Smoke-safe, optional smokeless mode, server-synced.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2333"
+  ]
+}
