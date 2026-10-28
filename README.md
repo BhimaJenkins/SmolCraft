@@ -1,5 +1,4 @@
 # SmolCraft
-![Shrink those crafting stations](images/smolexample.jpg)
 
 Your base, but smol. SmolCraft physically shrinks Valheim's production and crafting stations so they fit tighter builds — every station gets its own size slider.
 
@@ -13,6 +12,10 @@ Your base, but smol. SmolCraft physically shrinks Valheim's production and craft
 - **Multiplayer**: the server's settings are sent to every player who joins, and changes on the server are pushed live. On a server without SmolCraft, each player uses their own settings.
 - **Live updates**: change a slider in Configuration Manager (F1) or edit the .cfg and placed stations resize immediately.
 
+## No upgrade spacing
+
+In vanilla, station upgrades (Forge Bellows, Grinding Wheel, Tanning Rack, anvils…) refuse to be placed near each other: "needs more space". With **No Upgrade Spacing** on (default), that rule is gone. Upgrades only need to sit on something solid and be in range of their station. Wards and no-build zones still apply.
+
 ## Configuration
 
 File: `BepInEx/config/BhimaJenkins.SmolCraft.cfg`
@@ -21,7 +24,7 @@ File: `BepInEx/config/BhimaJenkins.SmolCraft.cfg`
 
 | Section | What's in it |
 |---|---|
-| 1 - General | Enabled, Smokeless Stations, Keep Smoke Exit At Vanilla Height, Enforce Server Settings |
+| 1 - General | Enabled, Smokeless Stations, Keep Smoke Exit At Vanilla Height, No Upgrade Spacing, Enforce Server Settings |
 | 2 - Smelters, Kilns & Refineries | Smelter, Blast Furnace, Charcoal Kiln, Eitr Refinery, Frost Foundry, Frigid Kiln, Windmill, Spinning Wheel… |
 | 3 - Crafting Stations | Workbench, Forge, Stonecutter, Artisan Table, Black Forge, Galdr Table… |
 | 4 - Station Upgrades | Chopping block, tanning rack, anvils, etc. |

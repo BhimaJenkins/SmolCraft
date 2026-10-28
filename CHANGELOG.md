@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+- New: **No Upgrade Spacing** (on by default) — station upgrades no longer need space around them; they only need a solid surface and their station in range. Server-synced.
+- Multiplayer settings format bumped to v2: server and clients need the same SmolCraft version.
+
 ## 0.1.0
 - Initial release.
 - Per-station size sliders (Configuration Manager), auto-discovered for every smelter, kiln, refinery, crafting station, station upgrade, cooking station and fermenter — including modded ones.
