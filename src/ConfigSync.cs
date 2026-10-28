@@ -17,13 +17,14 @@ namespace SmolCraft
     internal static class ConfigSync
     {
         private const string RpcName = "SmolCraft_SyncConfig";
-        private const int PackageVersion = 1;
+        private const int PackageVersion = 2;
 
         internal static bool HasServerConfig { get; private set; }
 
         private static bool _srvEnabled;
         private static bool _srvSmokeless;
         private static bool _srvRaiseSmoke;
+        private static bool _srvNoUpgradeSpacing;
         private static readonly Dictionary<string, float> SrvScales = new Dictionary<string, float>();
 
         internal static bool EffectiveEnabled =>
@@ -34,6 +35,9 @@ namespace SmolCraft
 
         internal static bool EffectiveRaiseSmokeExit =>
             HasServerConfig ? _srvRaiseSmoke : SmolCraftPlugin.RaiseSmokeExit.Value;
+
+        internal static bool EffectiveNoUpgradeSpacing =>
+            HasServerConfig ? _srvNoUpgradeSpacing : SmolCraftPlugin.NoUpgradeSpacing.Value;
 
         internal static IEnumerable<string> ServerStationNames => SrvScales.Keys;
 
@@ -116,6 +120,7 @@ namespace SmolCraft
             pkg.Write(SmolCraftPlugin.ModEnabled.Value);
             pkg.Write(SmolCraftPlugin.Smokeless.Value);
             pkg.Write(SmolCraftPlugin.RaiseSmokeExit.Value);
+            pkg.Write(SmolCraftPlugin.NoUpgradeSpacing.Value);
 
             var list = new List<StationInfo>(StationRegistry.Local);
             pkg.Write(list.Count);
@@ -146,6 +151,7 @@ namespace SmolCraft
                 _srvEnabled = pkg.ReadBool();
                 _srvSmokeless = pkg.ReadBool();
                 _srvRaiseSmoke = pkg.ReadBool();
+                _srvNoUpgradeSpacing = pkg.ReadBool();
 
                 SrvScales.Clear();
                 int count = pkg.ReadInt();

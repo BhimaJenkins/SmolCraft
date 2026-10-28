@@ -24,6 +24,12 @@ namespace SmolCraft
             TryPatch(harmony, typeof(ZNet), "OnDestroy",
                 postfix: Hook(typeof(ConfigSync), nameof(ConfigSync.ZNet_OnDestroy_Postfix)));
 
+            // No spacing rule between station upgrades.
+            PlacementPatches.MainHookActive = TryPatch(harmony, typeof(StationExtension), "OtherExtensionInRange",
+                prefix: Hook(typeof(PlacementPatches), nameof(PlacementPatches.OtherExtensionInRange_Prefix)));
+            TryPatch(harmony, typeof(Player), "UpdatePlacementGhost",
+                postfix: Hook(typeof(PlacementPatches), nameof(PlacementPatches.UpdatePlacementGhost_Postfix)));
+
             // Smoke handling.
             TryPatch(harmony, typeof(SmokeSpawner), "Spawn",
                 prefix: Hook(typeof(SmokePatches), nameof(SmokePatches.Spawn_Prefix)));
@@ -51,7 +57,7 @@ namespace SmolCraft
             return hm;
         }
 
-        private static void TryPatch(Harmony harmony, Type type, string methodName,
+        private static bool TryPatch(Harmony harmony, Type type, string methodName,
             HarmonyMethod prefix = null, HarmonyMethod postfix = null)
         {
             var target = AccessTools.Method(type, methodName);
@@ -60,16 +66,18 @@ namespace SmolCraft
                 SmolCraftPlugin.Log.LogWarning(
                     $"Could not find {type.Name}.{methodName} — this part of SmolCraft is disabled " +
                     "(a Valheim update probably renamed it).");
-                return;
+                return false;
             }
 
             try
             {
                 harmony.Patch(target, prefix, postfix);
+                return true;
             }
             catch (Exception ex)
             {
                 SmolCraftPlugin.Log.LogError($"Failed to patch {type.Name}.{methodName}: {ex.Message}");
+                return false;
             }
         }
     }

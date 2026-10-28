@@ -24,7 +24,7 @@ namespace SmolCraft
     {
         public const string ModGuid = "BhimaJenkins.SmolCraft";
         public const string ModName = "SmolCraft";
-        public const string ModVersion = "0.1.0";
+        public const string ModVersion = "0.2.0";
 
         internal static SmolCraftPlugin Instance;
         internal static ManualLogSource Log;
@@ -33,6 +33,7 @@ namespace SmolCraft
         internal static ConfigEntry<bool> Smokeless;
         internal static ConfigEntry<bool> RaiseSmokeExit;
         internal static ConfigEntry<bool> EnforceServerConfig;
+        internal static ConfigEntry<bool> NoUpgradeSpacing;
         internal static ConfigEntry<string> CustomStations;
         internal static ConfigEntry<bool> LogPieceNames;
 
@@ -77,6 +78,14 @@ namespace SmolCraft
                     null,
                     new ConfigurationManagerAttributes { Order = 20 }));
 
+            NoUpgradeSpacing = Config.Bind(general, "No Upgrade Spacing", true,
+                new ConfigDescription(
+                    "Station upgrades (Forge Bellows, Grinding Wheel, Tanning Rack, anvils, etc.) can be placed " +
+                    "right next to each other — no more 'needs more space'. They still have to be on a solid " +
+                    "surface and within range of their station. Works independently of the size settings.",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 15 }));
+
             EnforceServerConfig = Config.Bind(general, "Enforce Server Settings", true,
                 new ConfigDescription(
                     "SERVER ONLY. When on, the server sends its SmolCraft settings to every player that joins " +
@@ -116,6 +125,7 @@ namespace SmolCraft
             Smokeless.SettingChanged += OnAnySettingChanged;
             RaiseSmokeExit.SettingChanged += OnAnySettingChanged;
             EnforceServerConfig.SettingChanged += OnAnySettingChanged;
+            NoUpgradeSpacing.SettingChanged += (_, __) => ConfigSync.BroadcastIfServer();
 
             _harmony = new Harmony(ModGuid);
             Patches.ApplyAll(_harmony);
