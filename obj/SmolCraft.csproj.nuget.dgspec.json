@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source\\SmolCraft\\SmolCraft.csproj": {}
+    "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source2\\SmolCraft\\SmolCraft.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source\\SmolCraft\\SmolCraft.csproj": {
-      "version": "0.1.0",
+    "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source2\\SmolCraft\\SmolCraft.csproj": {
+      "version": "0.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source\\SmolCraft\\SmolCraft.csproj",
+        "projectUniqueName": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source2\\SmolCraft\\SmolCraft.csproj",
         "projectName": "SmolCraft",
-        "projectPath": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source\\SmolCraft\\SmolCraft.csproj",
+        "projectPath": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source2\\SmolCraft\\SmolCraft.csproj",
         "packagesPath": "C:\\Users\\pfort\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source\\SmolCraft\\obj\\",
+        "outputPath": "C:\\Users\\pfort\\Documents\\SMOLCRAFT\\SmolCraft-source2\\SmolCraft\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pfort\\AppData\\Roaming\\NuGet\\NuGet.Config",
